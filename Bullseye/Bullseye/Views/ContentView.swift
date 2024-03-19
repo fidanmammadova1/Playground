@@ -10,9 +10,14 @@ struct ContentView: View {
       BackgroundView(game: $game)
       VStack{
         InstructionViews(game: $game)
-        SliderView(sliderValue: $sliderValue)
-        HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+          .padding(.bottom, 100)
+        HitMeButton(
+          alertIsVisible: $alertIsVisible,
+          sliderValue: $sliderValue,
+          game: $game)
       }
+      SliderView(sliderValue: $sliderValue)
+      
     }
   }
 }
@@ -58,7 +63,8 @@ struct HitMeButton: View {
       ZStack {
         Color("ButtonColor")
         LinearGradient(
-          gradient: Gradient(colors: [Color.white.opacity(0.3), Color.clear]),
+          gradient: Gradient(
+            colors: [Color.white.opacity(0.3), Color.clear]),
           startPoint: .top, endPoint: .bottom)
       }
       )
@@ -75,7 +81,9 @@ struct HitMeButton: View {
       isPresented: $alertIsVisible,
       actions: {
         Button("Awesome") {
-          print("Alert closed")
+          game.startNewRound(
+            points: game.points(sliderValue: Int(sliderValue))
+          )
         }
       },
       message: {
