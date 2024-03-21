@@ -71,15 +71,15 @@ struct RingsView: View {
           .fill(
             RadialGradient(gradient: Gradient(colors: [Color("RingsColor").opacity(opacity * 0.8), Color("RingsColor").opacity(0)]), center: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, startRadius: 100, endRadius: 300)
           )
-          
+        
           .frame(width: size, height: size)
-//           .stroke(Color("RingColor") , lineWidth: 20)
-
+        //           .stroke(Color("RingColor") , lineWidth: 20)
+        
       }
     }
   }
 }
-  
-  #Preview {
-    BackgroundView(game: .constant(Game()))
-  }
+
+#Preview {
+  BackgroundView(game: .constant(Game()))
+}
