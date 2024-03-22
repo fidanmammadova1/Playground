@@ -25,14 +25,12 @@ struct RoundedImageViewFilled: View {
       .frame(width: Constants.General.roundedViewLengt, height: Constants.General.roundedViewLengt)
       .background(
         Circle()
-          .fill(
-            Color("ButtonFilledBackgroundColor")
-          )
+          .fill(Color("ButtonFilledBackgroundColor"))
       )
   }
 }
 
-struct RoundedRecTextView: View {
+struct RoundRecTextView: View {
   var text: String
   
   var body: some View {
@@ -50,12 +48,29 @@ struct RoundedRecTextView: View {
   }
 }
 
+struct RoundedTextView: View {
+  var text: String
+  
+  var body: some View {
+    Text(text)
+      .bold()
+      .font(.title3)
+      .foregroundColor(Color("TextColor"))
+      .frame(width: Constants.General.roundedViewLengt, height: Constants.General.roundedViewLengt)
+      .overlay(
+        Circle()
+          .strokeBorder(Color("LeaderboardRowColor"), lineWidth: Constants.General.strokeWidth)
+      )
+  }
+}
+
 struct PreviewView: View {
   var body: some View {
     VStack(spacing: 10) {
       RoundedImageViewFilled(systemName: "arrow.counterclockwise")
       RoundedImageViewStroked(systemName: "list.dash")
-      RoundedRecTextView(text: "100")
+      RoundRecTextView(text: "100")
+      RoundedTextView(text: "1")
     }
   }
 }
