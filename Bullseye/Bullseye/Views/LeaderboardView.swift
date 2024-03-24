@@ -16,6 +16,7 @@ struct LeaderboardView: View {
               let leaderboardEntry = game.leaderboardEntries[index]
               RowView(index: index + 1, score: leaderboardEntry.score, date: leaderboardEntry.date)
             }
+            .frame(maxWidth: .infinity)
           }
         }
       }
